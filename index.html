@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Red King Slot</title>
+  <style>
+    body {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .slot-container {
+      background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 100%);
+      border: 5px solid #FF0000;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      width: 360px;
+      box-shadow: 0 0 30px #FF0000, inset 0 0 20px #FFD700;
+      color: #FFD700;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .slot-reel {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .reel {
+      width: 90px;
+      height: 90px;
+      background: #000;
+      border: 3px solid #FFD700;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 10px #FFD700;
+    }
+
+    .reel-track {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 1.2s cubic-bezier(0.25, 1.5, 0.5, 1);
+    }
+
+    .reel-track div {
+      width: 100%;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      background-color: #000;
+    }
+
+    .button {
+      background: linear-gradient(45deg, #FF0000, #FFD700);
+      color: #000;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px #FFD700;
+      transition: transform 0.3s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-img {
+      width: 48px;
+      height: 48px;
+      animation: popIn 0.5s ease-out forwards;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.2); opacity: 0; }
+      60% { transform: scale(1.4); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="slot-container">
+    <img src="Red king.jpeg" alt="Red King Casino Logo" class="logo" />
+    <h1>Red King Slot</h1>
+    <div class="slot-reel">
+      <div class="reel"><div class="reel-track" id="reel1"></div></div>
+      <div class="reel"><div class="reel-track" id="reel2"></div></div>
+      <div class="reel"><div class="reel-track" id="reel3"></div></div>
+    </div>
+    <button class="button" id="spinButton">🎰 GIRAR</button>
+  </div>
+
+  <script>
+    const emojis = ['🍒', '💎', '🔔', '7️⃣', '🍀', '🍋', '⭐'];
+    const tracks = [
+      document.getElementById('reel1'),
+      document.getElementById('reel2'),
+      document.getElementById('reel3')
+    ];
+
+    function fillTrack(track) {
+      track.innerHTML = '';
+      for (let i = 0; i < 12; i++) {
+        const div = document.createElement('div');
+        div.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        track.appendChild(div);
+      }
+    }
+
+    function spinTrack(track, delay) {
+      fillTrack(track);
+      track.style.transition = 'transform 1.2s cubic-bezier(0.25, 1.5, 0.5, 1)';
+      track.style.transform = 'translateY(-1080px)';
+
+      setTimeout(() => {
+        track.style.transition = 'none';
+        track.innerHTML = `<div><img src="icons8-whatsapp-48.png" alt="WhatsApp" class="whatsapp-img" /></div>`;
+        track.style.transform = 'translateY(0)';
+      }, delay);
+    }
+
+    document.getElementById('spinButton').addEventListener('click', () => {
+      spinTrack(tracks[0], 1400);
+      spinTrack(tracks[1], 1700);
+      spinTrack(tracks[2], 2000);
+
+      setTimeout(() => {
+        window.location.href = "https://wa.link/gyirrx";
+      }, 2600);
+    });
+
+    tracks.forEach(track => {
+      track.parentElement.addEventListener('click', () => {
+        window.location.href = "https://wa.link/gyirrx";
+      });
+    });
+  </script>
+</body>
+</html>
